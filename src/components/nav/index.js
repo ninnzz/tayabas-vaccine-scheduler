@@ -1,23 +1,18 @@
 import React, { Component } from 'react';
-import {Navbar, Nav, NavDropdown, Container} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Container, Col, Row} from 'react-bootstrap';
+import CurrentTime from './time.js';
 
 
 class NavHeader extends Component {
   
   render() {
     return (
-      <Navbar bg="dark" variant="dark">
+      <Navbar expand="lg" variant="dark" bg="primary">
         <Container>
-          <Navbar.Brand href="#home">
-            <img
-              alt=""
-              src="/logo.svg"
-              width="30"
-              height="30"
-              className="d-inline-block align-top"
-            />{' '}
-          Tayabas City Vaccination
-          </Navbar.Brand>
+          <Navbar.Brand href="#">Tayabas City Vaccination Program</Navbar.Brand>
+          <Navbar.Text>
+            <CurrentTime/>
+          </Navbar.Text>
         </Container>
       </Navbar>
     );
