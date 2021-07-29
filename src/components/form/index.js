@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {ListGroup,Card,Button, Form, Navbar, Nav, NavDropdown, Container, Col, Row} from 'react-bootstrap';
 import Priority from './priority.js';
 import PriorityList from './priorityList.js';
-
+import './index.css';
 class RegForm extends Component {
   
   render() {
     return (
+    	
     	<Form>
+    	<div className="itemDiv"> 
     	  <Row className="mb-3">
 		    <h3> Personal Information </h3>
 		  </Row>
@@ -79,8 +81,16 @@ class RegForm extends Component {
 		    <h3> Priority Status </h3>
 		  </Row>
 		  <Row className="mb-3">
-			<Col><Priority/></Col>
-			<Col md={10}><PriorityList/></Col>
+			  <Col>
+			  <Form.Group as={Col} controlId="priority">
+		      <Form.Label>Priority A1</Form.Label>
+		      <Form.Select defaultValue="Choose...">
+		        <option>Choose...</option>
+		        <option>...</option>
+		      </Form.Select>
+		    </Form.Group>
+		    </Col>
+			  <Col md={5}><PriorityList/></Col>
 		  </Row>
 
 		  <Row className="mb-3">
@@ -88,19 +98,37 @@ class RegForm extends Component {
 		  </Row>
 		  <Row className="mb-3">
 		    <Form>
-		    {['passport', 'license', 'sss'].map((type) => (
-		    <div key={`default-checkbox`} className="mb-3">
-		      <Form.Check 
-		        type={'checkbox'}
-		        id={`default-checkbox`}
-		        label={`default checkbox`}
-		      />
-		    </div>
-		    ))}
+					{['checkbox'].map((type) => (
+				    <div key={`inline-${type}`} className="mb-3">
+				      <Form.Check
+				        inline
+				        label="Passport"
+				        name="group1"
+				        type={type}
+				        id={`inline-${type}-1`}
+				      />
+				      <Form.Check
+				        inline
+				        label="Licencse"
+				        name="group2"
+				        type={type}
+				        id={`inline-${type}-2`}
+				      />
+				      <Form.Check
+				        inline
+				        label="SSS"
+				        name="group2"
+				        type={type}
+				        id={`inline-${type}-2`}
+				      />
+
+				    </div>
+				  ))}
 		    </Form>
 		  </Row>
-		  <Row>
-		    <Col Col md={{ span: 4, offset: 10 }}>
+			</div>
+				<Row>
+		    <Col Col md={{ span: 4, offset: 9 }}>
 		      <Form.Check
 		        type="checkbox"
 		        id="autoSizingCheck"
@@ -108,14 +136,13 @@ class RegForm extends Component {
 		        label="Remember me"
 		      />
 		    </Col>
-		    <Col Col md={{ span: 4, offset: 10 }}>
+		    <Col Col md={{ span: 4, offset: 9 }}>
 		      <Button type="submit" className="mb-2">
 		        Submit
 		      </Button>
 		    </Col>
 		  </Row>
-
-		</Form>
+		  </Form>
     );
   }
 }
